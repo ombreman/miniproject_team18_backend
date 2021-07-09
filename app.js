@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 
-app.get('/', (req, res) => {res.send("<h1>Hello!!</h1>")})
+app.get('/', (req, res) => {res.send("<h1>Hello!!!</h1>")})
 
 sequelize.sync({ force: false })
     .then(() => console.log("Connected to MySQL."))
