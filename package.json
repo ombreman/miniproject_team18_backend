@@ -1,0 +1,27 @@
+{
+  "name": "miniproject_team18_backend",
+  "version": "1.0.0",
+  "description": "Miniproject team 18 backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ombreman/miniproject_team18_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ombreman/miniproject_team18_backend/issues"
+  },
+  "homepage": "https://github.com/ombreman/miniproject_team18_backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.10",
+    "sequelize": "^6.6.5"
+  }
+}
