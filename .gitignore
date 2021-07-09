@@ -301,4 +301,4 @@ pip-selfcheck.json
 .idea
 
 # conifg js
-.config.json
+*.config.json
