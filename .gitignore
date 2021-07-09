@@ -299,3 +299,6 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/venv,macos,pycharm,python
 
 .idea
+
+# conifg js
+.config.json

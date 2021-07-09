@@ -1,14 +1,18 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const { sequelize } = require("./models/index")
 
 const app = express();
-const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send(" TEAM 18!");
-});
-app.use("/api", bodyParser.json(), router);
-app.use(express.static("./assets"));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+
+app.get('/', (req, res) => {res.send("<h1>Hello!</h1>")})
+
+sequelize.sync({ force: false })
+    .then(() => console.log("Connected to MySQL."))
+    .catch((err) => console.error(err))
+
 
 app.listen(8080, () => {
   console.log("서버가 켜졌어요!");
