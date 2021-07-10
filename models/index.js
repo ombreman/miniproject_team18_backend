@@ -21,6 +21,10 @@ db.sequelize = sequelize  // insert sequelize in to object
 db.Comment = Comment(sequelize, Sequelize.DataTypes)
 db.Ad = Ad(sequelize, Sequelize.DataTypes)  //  question => how do we know this part ? cuz the function using this two parameters to make the model
 db.User = User( sequelize, Sequelize.DataTypes)
+
 db.Ad.hasMany(db.Comment)
+db.User.hasMany(db.Ad)
+db.User.hasMany(db.Comment)
+
 
 module.exports = db
