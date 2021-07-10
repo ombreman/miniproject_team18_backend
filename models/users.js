@@ -1,29 +1,34 @@
-const hash = require('object-hash');
+const hash = require('object-hash')
 
-module.exports = function( sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
-        // Model attributes are defined here
-        userId: {
-            type: DataTypes.STRING(20), // 글자수 제한
-            unique: true, // 중복 방지
-            allowNull: false // 띄어쓰기 불가
+        accountId: {
+            type: DataTypes.STRING(16),
+            unique: true,
+            allowNull: false
         },
         nickname: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING(16),
             unique: true,
             allowNull: false
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(64),
             allowNull: false,
-            set(value) {
-                this.setDataValue('password', hash(value));
+
+            set(password) {
+                this.setDataValue('password', hash(password))
             }
-            // allowNull defaults to true
         }
     }, {
-        // Other model options go here
-        timestamps: true
-    });
+        timestamps: true,
+        updateAt: false
+    })
+
+    User.associate = models => {
+        User.hasMany(models.Ad, { foreignKey: { name: 'userId' }})
+        User.hasMany(models.Comment, { foreignKey: { name: 'userId' }})
+    }
+
     return User
-};
+}

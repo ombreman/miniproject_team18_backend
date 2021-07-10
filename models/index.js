@@ -1,30 +1,21 @@
-
-const Sequelize = require('sequelize')// import library 
-const env = process.env.NODE_ENV || 'development'
-const config = require(__dirname + '/../config/config.json')[env]
-const Comment = require("./comments")
-const Ad = require("./ads")
+const Sequelize = require('sequelize')
+const { config } = require('./../config/config.json')
+const Comment = require('./comments')
+const Ad = require('./ads')
 const User = require('./users')
 
-// instanciate by library 
+const sequelize = new Sequelize(config)
+const dataTypes = Sequelize.DataTypes
 
-const sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
-)
+const models = {}
 
-const db = {}
+models.sequelize = sequelize
+models.User = User(sequelize, dataTypes)
+models.Ad = Ad(sequelize, dataTypes)
+models.Comment = Comment(sequelize, dataTypes)
 
-db.sequelize = sequelize  // insert sequelize in to object
-db.Comment = Comment(sequelize, Sequelize.DataTypes)
-db.Ad = Ad(sequelize, Sequelize.DataTypes)  //  question => how do we know this part ? cuz the function using this two parameters to make the model
-db.User = User( sequelize, Sequelize.DataTypes)
+models.User.associate(models)
+models.Ad.associate(models)
+models.Comment.associate(models)
 
-db.Ad.hasMany(db.Comment)
-db.User.hasMany(db.Ad)
-db.User.hasMany(db.Comment)
-
-
-module.exports = db
+module.exports = models

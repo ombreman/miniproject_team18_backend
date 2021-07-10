@@ -1,33 +1,26 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
     const Ad = sequelize.define('Ad', {
-       // id => primary key  auto generated , created at => auto generated
-
         title: {
-          type: DataTypes.TEXT
-        
+          type: DataTypes.STRING,
         },
-    
         category: {
             type: DataTypes.STRING,
-            defaultValue: " CS "
+            defaultValue: "CS"
         },
-
         content: {
             type: DataTypes.TEXT,
-            
         },
-    },
-       {
+    }, {
         timestamps: true,
         updateAt: false,
-        charset: 'utf8mb4',  //mb4=>emoji
-        collate: 'utf8mb4_general_ci'// search
-       });
-  
-      return Ad
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_general_ci'
+    })
 
-      
+    Ad.associate = models => {
+        Ad.belongsTo(models.User, { foreignKey: { name: 'userId' }})
+        Ad.hasMany(models.Comment, { foreignKey: { name: 'adId' }})
     }
 
-    // one nicakname can have many ads
-    // ad can have many comments
+    return Ad
+}
