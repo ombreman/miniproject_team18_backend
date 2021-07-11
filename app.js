@@ -13,4 +13,4 @@ sequelize.sync({ force: false })
     .catch(err => console.error(err))
 
 // Port 8080
-app.listen(port, port => console.log("Server is running on port " + port))
+app.listen(port, () => console.log("Server is running on port " + port))
