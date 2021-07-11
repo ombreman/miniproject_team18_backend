@@ -19,12 +19,9 @@
   "homepage": "https://github.com/ombreman/miniproject_team18_backend#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "joi": "^17.4.0",
-    "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.2.5",
-    "nodemon": "^2.0.10",
-    "object-hash": "^2.2.0",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "mysql2": "^2.2.5",
+    "object-hash": "^2.2.0"
   }
 }
