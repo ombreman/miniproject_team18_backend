@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         content: {
             type: DataTypes.TEXT,
         },
+        participant:{
+            type: DataTypes.STRING,
+        },
+        maxPeople:{ 
+            type: DataTypes.INTEGER,
+        },
     }, {
         timestamps: true,
         updateAt: false,

@@ -1,8 +1,8 @@
 {
   "config": {
     "username": "root",
-    "password": null,
-    "database": null,
+    "password": "fghjkl;'",
+    "database": "mini_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
