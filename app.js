@@ -26,7 +26,7 @@ app.get('/', async(req, res) => {
 })
 
 app.use('/ads', adsRouter)
-app.use('/ads/:adId/party', partiesRouter)
+app.use('/ads/:adId/parties', partiesRouter)
 app.use('/ads/:adId/comments', commentsRouter)
 app.use((_, res) => res.send("INVALID ROUTE"))
 
