@@ -7,18 +7,32 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             defaultValue: "CS"
         },
+        host: {
+            type: DataTypes.STRING
+        },
         content: {
             type: DataTypes.TEXT,
         },
+        maxPeople: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        createdAt : {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
+        }
     }, {
-        timestamps: true,
-        updateAt: false,
+        timestamps: false,
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci'
     })
 
     Ad.associate = models => {
-        Ad.belongsTo(models.User, { foreignKey: { name: 'userId' }})
+        Ad.belongsToMany(models.User, { 
+            foreignKey: 'adId', 
+            as: 'UsersInAd', 
+            through: models.Party 
+        })
         Ad.hasMany(models.Comment, { foreignKey: { name: 'adId' }})
     }
 

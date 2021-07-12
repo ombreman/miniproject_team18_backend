@@ -1,5 +1,8 @@
 const express = require("express")
-const { sequelize, Ad, User, Comment } = require("./models/index")
+const { sequelize, User } = require("./models/index")
+const adsRouter = require("./routers/ads")
+const commentsRouter = require("./routers/comments")
+const partiesRouter = require("./routers/parties")
 
 // Express Settings
 const app = express()
@@ -7,29 +10,25 @@ const port = 8080
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// Main Board Page
-app.get('/ads', async (req, res) => {
-    const ads = await Ad.findAll();
-    console.log(ads);
-    res.json(ads);
-});
-
-//Main Board Page Filter
-app.get('/ads', async (req, res) => {
-    const { category } = req.query;
-    if (category) {
-        const ads = await Ad.findAll({ where: {category: category} });
-        res.json(ads);
-    } else {
-        const ads = await Ad.findAll();
-        res.json(ads);
-    }
-});
-
 // Sequelize Connected
 sequelize.sync({ force: false })
     .then(() => console.log("Connected to MySQL."))
     .catch(err => console.error(err))
+
+// Routers
+app.get('/', async(req, res) => {
+    await User.create({
+        accountId: "test",
+        nickname: "test",
+        password: "1234"
+    })
+    res.send("OK")
+})
+
+app.use('/ads', adsRouter)
+app.use('/ads/:adId/party', partiesRouter)
+app.use('/ads/:adId/comments', commentsRouter)
+app.use((_, res) => res.send("INVALID ROUTE"))
 
 // Port 8080
 app.listen(port, () => console.log("Server is running on port " + port))

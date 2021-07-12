@@ -19,14 +19,21 @@ module.exports = (sequelize, DataTypes) => {
             set(password) {
                 this.setDataValue('password', hash(password))
             }
+        },
+        createdAt : {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
         }
     }, {
-        timestamps: true,
-        updateAt: false
+        timestamps: false
     })
 
     User.associate = models => {
-        User.hasMany(models.Ad, { foreignKey: { name: 'userId' }})
+        User.belongsToMany(models.Ad, { 
+            foreignKey: 'userId', 
+            as: 'AdsForUser', 
+            through: models.Party 
+        })
         User.hasMany(models.Comment, { foreignKey: { name: 'userId' }})
     }
 
