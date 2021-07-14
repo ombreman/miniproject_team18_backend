@@ -1,11 +1,20 @@
+const formatTime = require('./../utils/moment')
+
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define('Comment', {
         content: {
             type: DataTypes.TEXT
         },
+        createdAt : {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+
+            get() {
+                return formatTime(this)
+            }
+        }
     }, {
-        timestamps: true,
-        updateAt: false,
+        timestamps: false,
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci'
     })

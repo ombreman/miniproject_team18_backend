@@ -1,5 +1,5 @@
+const formatTime = require('../utils/moment')
 const hash = require('object-hash')
-
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         accountId: {
@@ -17,17 +17,28 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
 
             set(password) {
-                this.setDataValue('password', hash(password))
+                return this.setDataValue('password', hash(password))
+            }
+        },
+        createdAt : {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+
+            get() {
+                return formatTime(this)
             }
         }
     }, {
-        timestamps: true,
-        updateAt: false
+        timestamps: false
     })
 
     User.associate = models => {
-        User.hasMany(models.Ad, { foreignKey: { name: 'userId' } })
-        User.hasMany(models.Comment, { foreignKey: { name: 'userId' } })
+        User.belongsToMany(models.Ad, { 
+            foreignKey: 'userId', 
+            as: 'AdsForUser', 
+            through: models.Party 
+        })
+        User.hasMany(models.Comment, { foreignKey: { name: 'userId' }})
     }
 
     return User

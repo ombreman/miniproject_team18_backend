@@ -1,28 +1,30 @@
 const express = require("express")
-const Comment = require("./../models/comments")
+const { Comment } = require("./../models/index")
+const verifyToken = require("./../middleware/verifyToken")
 
 const router = express.Router({ mergeParams: true })
 
+// adId, userId, content
 router.route('/')
     .get(async (req, res) => {
         const comments = await Comment.findAll({ where: { adId: req.params.adId }})
         return res.status(200).json(comments)
     })
 
-    .post(async (req, res) => {
-        const newComment = await Comment.create(req.body)
-        return res.status(201).json(newComment)
+    .post(verifyToken, (req, res) => {
+        Comment.create(req.body)
+        return res.status(201).json({})
     })
 
 router.route('/:commentId')
-    .put(async (req, res) => {
-        const updatedComment = await Comment.update(req.body, { where: { id: req.params.commentId }})
-        return res.status(200).json(updatedComment)
+    .put(verifyToken, (req, res) => {
+        Comment.update(req.body, { where: { id: req.params.commentId }})
+        return res.status(204).json({})
     })
 
-    .delete(async (req, res) => {
-        await Comment.destroy({ where: { id: req.params.commentId }})
-        return res.status(204)
+    .delete(verifyToken, (req, res) => {
+        Comment.destroy({ where: { id: req.params.commentId }})
+        return res.status(204).json({})
     })
 
 module.exports = router
