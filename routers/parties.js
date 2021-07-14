@@ -15,4 +15,5 @@ router.route('/')
         return res.status(204)
     })
 
+// instead of using two separte  app.post and app.delete => put everything inside one route
 module.exports = router

@@ -3,6 +3,7 @@ const { sequelize, User } = require("./models/index")
 const adsRouter = require("./routers/ads")
 const commentsRouter = require("./routers/comments")
 const partiesRouter = require("./routers/parties")
+const usersRouter = require("./routers/users")
 
 // Express Settings
 const app = express()
@@ -16,7 +17,7 @@ sequelize.sync({ force: false })
     .catch(err => console.error(err))
 
 // Routers
-app.get('/', async(req, res) => {
+app.get('/', async (req, res) => {
     await User.create({
         accountId: "test",
         nickname: "test",
@@ -28,6 +29,7 @@ app.get('/', async(req, res) => {
 app.use('/ads', adsRouter)
 app.use('/ads/:adId/parties', partiesRouter)
 app.use('/ads/:adId/comments', commentsRouter)
+app.use('/users', usersRouter)
 app.use((_, res) => res.send("INVALID ROUTE"))
 
 // Port 8080
