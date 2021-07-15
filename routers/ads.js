@@ -52,6 +52,7 @@ router.route('/:adId')
     })
 
     .put(verifyToken, (req, res) => {
+        // req.body = { title, category, content, maxPeople, ... }
         Ad.update(req.body, { where: { id: req.params.adId }})
         return res.status(204).json({})
     })
