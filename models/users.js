@@ -17,17 +17,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(64),
             allowNull: false,
 
-            set(password) {
-                return this.setDataValue('password', hash(password))
-            }
+            set(password) { return this.setDataValue('password', hash(password)) }
         },
         createdAt : {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
 
-            get() {
-                return formatTime(this)
-            }
+            get() { return formatTime(this) }
         }
     }, {
         timestamps: false

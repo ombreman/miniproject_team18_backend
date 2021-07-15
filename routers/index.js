@@ -13,7 +13,7 @@ router.route("/login")
         }})
 
         if (userInfo) {
-            res.send({
+            return res.status(200).send({
                 token: jwt(userInfo.accountId),
                 user: userInfo
             })

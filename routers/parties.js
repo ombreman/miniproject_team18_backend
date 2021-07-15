@@ -5,6 +5,7 @@ const router = express.Router({ mergeParams: true })
 
 router.route('/')
     .post((req, res) => {
+        // req.body = { adId, userId }
         Party.create(req.body)
         return res.status(201).json({})
     })

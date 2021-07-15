@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
 
-            get() {
-                return formatTime(this)
-            }
+            get() { return formatTime(this) }
         }
     }, {
         timestamps: false,
