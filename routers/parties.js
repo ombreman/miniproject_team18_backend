@@ -1,22 +1,17 @@
 const express = require("express")
 const { Party } = require("./../models/index")
 
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 
-// adId, userId
 router.route('/')
-    .post((req, res, next) => {
-        try{
-            Party.create(req.body)
-            return res.status(201).json({})
-        } catch(err) {
-            console.error(err)
-            next()
-        }
+    .post((req, res) => {
+        Party.create(req.body)
+        return res.status(201).json({})
     })
 
+router.route('/:userId')
     .delete((req, res) => {
-        Party.destory(req.body)
+        Party.destroy({ where: req.params })
         return res.status(204).json({})
     })
 

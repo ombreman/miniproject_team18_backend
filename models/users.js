@@ -1,5 +1,6 @@
 const formatTime = require('../utils/moment')
 const hash = require('object-hash')
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         accountId: {

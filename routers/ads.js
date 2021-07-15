@@ -4,12 +4,10 @@ const verifyToken = require("./../middleware/verifyToken")
 
 const router = express.Router()
 
-// host, title, category, content, maxPeople
 router.route('/')
     .get(async (req, res) => {
         if (req.query.category) {
-            const ads = await Ad.findAll({ 
-                where: { category: req.query.category },
+            const ads = await Ad.findAll({ where: { category: req.query.category },
                 include: [{
                     model: User,
                     as: 'UsersInAd',
@@ -30,19 +28,15 @@ router.route('/')
         }
     })
 
-    .post(verifyToken, async (req, res, next) => {
-        try{
-            const host = await User.findOne({ where: { nickname: req.body.host }}) 
-            const newAd = await Ad.create(req.body)
-            Party.create({
-                adId: newAd.id,
-                userId: host.id
-            })
-            return res.status(201).json({})
-        } catch(err) {
-            console.error(err)
-            next()
-        }
+    .post(verifyToken, async (req, res) => {
+        const host = await User.findOne({ where: { nickname: req.body.host }}) 
+        // req.body = { host, title, category, content, maxPeople }
+        const newAd = await Ad.create(req.body)
+        Party.create({
+            adId: newAd.id,
+            userId: host.id
+        })
+        return res.status(201).send("send")
     })
 
 router.route('/:adId')
