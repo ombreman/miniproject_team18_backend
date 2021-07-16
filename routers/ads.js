@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require("express")
 const { Ad, User } = require("../models/index")
 const router = express.Router()
@@ -81,4 +82,75 @@ router.get('/test', cors(corsOpt), function (req, res) {
   res.send(" CORS working ");
 });
 
+=======
+const express = require("express")
+const { Ad, User, Party } = require("./../models/index")
+const verifyToken = require("./../middleware/verifyToken")
+
+const router = express.Router()
+
+// host, title, category, content, maxPeople
+router.route('/')
+    .get(async (req, res) => {
+        if (req.query.category) {
+            const ads = await Ad.findAll({ 
+                where: { category: req.query.category },
+                include: [{
+                    model: User,
+                    as: 'UsersInAd',
+                    attributes: ['nickname']
+                }] 
+            })
+            return res.status(200).json(ads)
+        }
+        else {
+            const ads = await Ad.findAll({ 
+                include: [{
+                    model: User,
+                    as: 'UsersInAd',
+                    attributes: ['nickname']
+                }]
+            })
+            return res.status(200).json(ads)
+        }
+    })
+
+    .post(verifyToken, async (req, res, next) => {
+        try{
+            const host = await User.findOne({ where: { nickname: req.body.host }}) 
+            const newAd = await Ad.create(req.body)
+            Party.create({
+                adId: newAd.id,
+                userId: host.id
+            })
+            return res.status(201).json({})
+        } catch(err) {
+            console.error(err)
+            next()
+        }
+    })
+
+router.route('/:adId')
+    .get(async (req, res) => {
+        const ad = await Ad.findByPk(req.params.adId, { 
+            include: [{
+                model: User,
+                as: 'UsersInAd',
+                attributes: ['nickname']
+            }]
+        })
+        return res.status(200).json(ad)
+    })
+
+    .put(verifyToken, (req, res) => {
+        Ad.update(req.body, { where: { id: req.params.adId }})
+        return res.status(204).json({})
+    })
+
+    .delete(verifyToken, (req, res) => {
+        Ad.destroy({ where: { id: req.params.adId }})
+        return res.status(204).json({})
+    })
+
+>>>>>>> bcd0346f35691e92d554e1ded3cbf5e6c40f3b66
 module.exports = router
