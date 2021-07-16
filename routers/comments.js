@@ -1,11 +1,11 @@
 const express = require("express")
-const Comment = require("./../models/comments")
+const { Comment } = require("./../models/index")
 
 const router = express.Router({ mergeParams: true })
 
 router.route('/')
     .get(async (req, res) => {
-        const comments = await Comment.findAll({ where: { adId: req.params.adId }})
+        const comments = await Comment.findAll({ where: { adId: req.params.adId } })
         return res.status(200).json(comments)
     })
 
@@ -16,12 +16,12 @@ router.route('/')
 
 router.route('/:commentId')
     .put(async (req, res) => {
-        const updatedComment = await Comment.update(req.body, { where: { id: req.params.commentId }})
+        const updatedComment = await Comment.update(req.body, { where: { id: req.params.commentId } })
         return res.status(200).json(updatedComment)
     })
 
     .delete(async (req, res) => {
-        await Comment.destroy({ where: { id: req.params.commentId }})
+        await Comment.destroy({ where: { id: req.params.commentId } })
         return res.status(204)
     })
 

@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Ad = sequelize.define('Ad', {
         title: {
-          type: DataTypes.STRING,
+            type: DataTypes.STRING,
         },
         category: {
             type: DataTypes.STRING,
@@ -10,11 +10,14 @@ module.exports = (sequelize, DataTypes) => {
         content: {
             type: DataTypes.TEXT,
         },
-        participant:{
+        participant: {
             type: DataTypes.STRING,
         },
-        maxPeople:{ 
+        maxPeople: {
             type: DataTypes.INTEGER,
+        },
+        host: {
+            type: DataTypes.STRING,
         },
     }, {
         timestamps: true,
@@ -24,8 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Ad.associate = models => {
-        Ad.belongsTo(models.User, { foreignKey: { name: 'userId' }})
-        Ad.hasMany(models.Comment, { foreignKey: { name: 'adId' }})
+        Ad.belongsTo(models.User, { foreignKey: { name: 'userId' } })
+        Ad.hasMany(models.Comment, { foreignKey: { name: 'adId' } })
     }
 
     return Ad

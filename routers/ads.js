@@ -1,7 +1,21 @@
 const express = require("express")
-const { Ad, User } = require("./models/index")
+const { Ad, User } = require("../models/index")
 const router = express.Router()
 
+const cors = require("cors")
+
+
+//allow all the CORS
+
+const corsOpt = function (req, callback) {
+  callback(null, { origin: true })
+  console.log("this is trough the CORS");
+};
+// 모든 도메인의 통신을 허용합니다.
+
+router.options('http://localhost:8081/', cors(corsOpt));
+// 모든 options 메서드로의 사전 전달 접근을 허용합니다.
+router.use(cors(corsOpt))
 
 
 router.get('/', async (req, res) => {
@@ -60,5 +74,11 @@ router.delete('/:adId', async (req, res) => {
   const user = await Ad.destroy({ where: { id: adId } })
   res.status(200).send("successfully deleted")
 })
+
+
+
+router.get('/test', cors(corsOpt), function (req, res) {
+  res.send(" CORS working ");
+});
 
 module.exports = router
