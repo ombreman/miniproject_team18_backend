@@ -4,16 +4,16 @@ Miniproject Team 18 backend
 
 ## Team Members :
 
- Front-end : Dongmin Lee  :  https://github.com/leedmeen
+ Front-end : Dongmin Lee  :  https://github.com/leedmeen </br>
              Donghwan Won: https://github.com/endol007
  
- Back-end : Changgil Jeong: https://github.com/ombreman
-            Hayoung Song: https://github.com/hayasha
+ Back-end : Changgil Jeong: https://github.com/ombreman </br>
+            Hayoung Song: https://github.com/hayasha </br>
             Skyler Minsu Bang: https://github.com/skylermban 
           
 ## Team Repository :
 
- Backend : https://github.com/ombreman/miniproject_team18_backend
+ Backend : https://github.com/ombreman/miniproject_team18_backend </br>
  
  Front : https://github.com/ombreman/miniproject_team18_frontend
  
