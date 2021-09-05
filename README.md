@@ -19,15 +19,15 @@ Miniproject Team 18 backend
  
 ## Proejct Scope
 
- 1. Project Name
-     Dev-moim (개모임:  개발자들의모임)
+1. Project Name
+     Dev-moim (개모임: 개발자들의모임)
 
- 2. Project Background
+2. Project Background
 
-    In voyage 99 dev web progarmming bootcamp,  stdudents can have form a study group or presenstaion. 
-    Students can use this website to register and join in the study/presentaion team. 
+    In voyage 99 dev web progarmming bootcamp, stdudents can form a study group or presenstaion. 
+    Students can use this website to register and join in the study/presentaion as a group. 
 
- 3. Implemented Features
+3. Implemented Features
 
     Sign up
       Create an Account
@@ -39,34 +39,34 @@ Miniproject Team 18 backend
 
       Log out 
 
-      Write a post 
-      Check Detail of post  
-      Delte / Edit the post 
+      Write posts
+      Check Detail of posts
+      Delete / Edit posts 
 
       Participate in the study post(group)
       Cancel the participation
       
-      Leave Comment 
-      Delte/Edit the comment
+      Leave Comments 
+      Delete/Edit the comments
  
  
-  4. Skills
+ 4. Skills
 
-   - Node Js 
+   - Node.js
       - Package :  
           -  CORS 
-          -  express
-          -  jsonwebtoken
-          -  moments
+          -  Express
+          -  Jsonwebtoken
+          -  moment I.O.
           -  mysql2
           -  object-hash
-          -  sequelize
-          -  sequelizer-cli
-   - mySQL
+          -  Sequelize
+          -  Sequelizer-cli
+   - MySQL
       
-   - React JS 
+   - React.js
 
- 5. Demo Video
+5. Demo Video
 
   Demonstration Video : https://www.youtube.com/watch?v=GT5bN4s9PXk
  
