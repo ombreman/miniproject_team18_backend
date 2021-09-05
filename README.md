@@ -1,41 +1,40 @@
-# miniproject_team18_backend
-Voyoga 99 Web Developer Bootcammp 
-Miniproject team 18 backend
+# Mini Project_Team18_Backend
+Voyoge 99 Web Developer Bootcammp 
+Miniproject Team 18 backend
 
 
-Team Members :
+Team Members
 
-Backend : https://github.com/ombreman/miniproject_team18_backend
-Front : https://github.com/ombreman/miniproject_team18_frontend
-
- Front :  Dongmin Lee  :  https://github.com/leedmeen
-          Donghwan Won: https://github.com/endol007
+ Front-end : Dongmin Lee  :  https://github.com/leedmeen
+             Donghwan Won: https://github.com/endol007
  
- Back :   
-          Changgil Jeong: https://github.com/ombreman
-          Hayoung Song: https://github.com/hayasha
-          Skyler Minsu Bang: https://github.com/skylermbang
+ Back-end : Changgil Jeong: https://github.com/ombreman
+            Hayoung Song: https://github.com/hayasha
+            Skyler Minsu Bang: https://github.com/skylermban 
           
-          
+Team Repository :
 
-
-## Proejct Scopre
+ Backend : https://github.com/ombreman/miniproject_team18_backend
+ 
+ Front : https://github.com/ombreman/miniproject_team18_frontend
+ 
+## Proejct Scope
 
  1. Project Name 
-     Gaemoim (개모임:  개발자들의모임)
+     Dev-moim (개모임:  개발자들의모임)
 
  2. Project Background
 
-    In voyaga 99 dev web progarmming bootcamp,  stdudents can have form a study group or presenstaion. 
+    In voyage 99 dev web progarmming bootcamp,  stdudents can have form a study group or presenstaion. 
     Students can use this website to register and join in the study/presentaion team. 
 
-3. Implemented Features 
+ 3. Implemented Features 
 
     Sign up
       Create an Account
-         -Check ID
-         -Check Nickname
-         -Check PW 
+         - Check Nickname
+         - Check ID
+         - Check Password 
       Log in
          - JWT token
 
@@ -43,7 +42,7 @@ Front : https://github.com/ombreman/miniproject_team18_frontend
 
       Write a post 
       Check Detail of post  
-      Delte/ Edit the post 
+      Delte / Edit the post 
 
       Participate in the study post(group)
       Cancel the participation
@@ -56,7 +55,7 @@ Front : https://github.com/ombreman/miniproject_team18_frontend
 
    - Node Js 
       - Package :  
-          -  Cors 
+          -  CORS 
           -  express
           -  jsonwebtoken
           -  moments
