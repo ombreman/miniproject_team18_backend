@@ -2,8 +2,7 @@
 Voyoge 99 Web Developer Bootcamp 
 Miniproject Team 18 backend
 
-
-Team Members
+## Team Members :
 
  Front-end : Dongmin Lee  :  https://github.com/leedmeen
              Donghwan Won: https://github.com/endol007
@@ -12,7 +11,7 @@ Team Members
             Hayoung Song: https://github.com/hayasha
             Skyler Minsu Bang: https://github.com/skylermban 
           
-Team Repository :
+## Team Repository :
 
  Backend : https://github.com/ombreman/miniproject_team18_backend
  
@@ -51,7 +50,7 @@ Team Repository :
       Delte/Edit the comment
  
  
-4. Skills
+  4. Skills
 
    - Node Js 
       - Package :  
@@ -67,9 +66,9 @@ Team Repository :
       
    - React JS 
 
-5. Demo video
+ 5. Demo video
 
- Demonstration Video : https://www.youtube.com/watch?v=GT5bN4s9PXk
+  Demonstration Video : https://www.youtube.com/watch?v=GT5bN4s9PXk
  
  
  
